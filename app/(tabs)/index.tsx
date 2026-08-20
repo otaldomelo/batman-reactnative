@@ -7,6 +7,93 @@ import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { HelloWave } from '@/components/hello-wave';
 
+const batmanIdentities = [
+  {
+    name: 'Bruce Wayne',
+    role: 'Bilionário • Empresário',
+    image: require('@/assets/images/batman/bruce-wayne.jpg'),
+  },
+  {
+    name: 'Batman',
+    role: 'O Cavaleiro das Trevas',
+    image: require('@/assets/images/batman/batman.jpg'),
+  },
+];
+
+const allies = [
+  {
+    name: 'Alfred Pennyworth',
+    role: 'Mordomo e mentor',
+    image: require('@/assets/images/allies/alfred.jpg'),
+  },
+  {
+    name: 'Comissário Gordon',
+    role: 'GCPD',
+    image: require('@/assets/images/allies/gordon.jpg'),
+  },
+  {
+    name: 'Nightwing',
+    role: 'Dick Grayson',
+    image: require('@/assets/images/allies/nightwing.jpg'),
+  },
+  {
+    name: 'Red Hood',
+    role: 'Jason Todd',
+    image: require('@/assets/images/allies/redhood.jpg'),
+  },
+  {
+    name: 'Red Robin',
+    role: 'Tim Drake',
+    image: require('@/assets/images/allies/redrobin.jpg'),
+  },
+  {
+    name: 'Barbara Gordon',
+    role: 'Oracle / Batgirl',
+    image: require('@/assets/images/allies/barbaragordon.jpg'),
+  },
+  {
+    name: 'Robin',
+    role: 'Damian Wayne',
+    image: require('@/assets/images/allies/robin.jpg'),
+  },
+
+  {
+    name: 'Batwoman',
+    role: 'Kate Kane',
+    image: require('@/assets/images/allies/batwoman.jpg'),
+  },
+  {
+    name: 'Catwoman',
+    role: 'Selina Kyle',
+    image: require('@/assets/images/allies/catwoman.jpg'),
+  },
+  {
+    name: 'Spoiler',
+    role: 'Stephanie Brown',
+    image: require('@/assets/images/allies/spoiler.jpg'),
+  },
+  {
+    name: 'Bluebird',
+    role: 'Harper Row',
+    image: require('@/assets/images/allies/bluebird.jpg'),
+  },
+  {
+    name: 'Black Bat',
+    role: 'Cassandra Cain',
+    image: require('@/assets/images/allies/blackbatman.jpg'),
+  },
+  {
+    name: 'Batwing',
+    role: 'Luke Fox',
+    image: require('@/assets/images/allies/Batwing.jpg'),
+  },
+  {
+    name: 'Azrael',
+    role: 'Jean-Paul Valley',
+    image: require('@/assets/images/allies/Azrael.jpg'),
+  },
+];
+
 export default function HomeScreen() {
   return (
     <ParallaxScrollView
@@ -46,15 +133,50 @@ export default function HomeScreen() {
         <HelloWave />
       </ThemedView>
 
+      {/* BRUCE WAYNE / BATMAN */}
+<ThemedView style={styles.section}>
+  <ThemedText style={styles.sectionTitle}>
+    POR TRÁS DA MÁSCARA
+  </ThemedText>
+
+  <ThemedText style={styles.sectionDescription}>
+    Duas faces. Uma única missão.
+  </ThemedText>
+
+  <View style={styles.identityGrid}>
+    {batmanIdentities.map((identity) => (
+      <View key={identity.name} style={styles.identityCard}>
+        <Image
+          source={identity.image}
+          style={styles.identityImage}
+          contentFit="cover"
+        />
+
+        <View style={styles.identityOverlay} />
+
+        <View style={styles.identityInfo}>
+          <ThemedText style={styles.identityName}>
+            {identity.name}
+          </ThemedText>
+
+          <ThemedText style={styles.identityRole}>
+            {identity.role}
+          </ThemedText>
+        </View>
+      </View>
+    ))}
+  </View>
+</ThemedView>
+
       {/* INTRO */}
       <ThemedView style={styles.card}>
         <ThemedText style={styles.cardTitle}>
-          🦇 THE GOTHAM KNIGHT
+          🦇 O CAVALEIRO DE GOTHAM
         </ThemedText>
 
         <ThemedText style={styles.cardText}>
-          Batman é o lendário protetor de Gotham City. 
-          Por trás da máscara está Bruce Wayne, 
+          Batman é o lendário protetor de Gotham City.
+          Por trás da máscara está Bruce Wayne,
           um bilionário que dedicou sua vida a combater o crime.
         </ThemedText>
       </ThemedView>
@@ -103,7 +225,7 @@ export default function HomeScreen() {
       {/* GOTHAM */}
       <ThemedView style={styles.gothamCard}>
         <ThemedText style={styles.gothamLabel}>
-          LOCATION
+          LOCALIZAÇÃO
         </ThemedText>
 
         <ThemedText style={styles.gothamTitle}>
@@ -125,19 +247,39 @@ export default function HomeScreen() {
         </Link>
       </ThemedView>
 
-      {/* TEAM */}
+      {/* ALIADOS */}
       <ThemedView style={styles.section}>
         <ThemedText style={styles.sectionTitle}>
           ALIADOS
         </ThemedText>
 
-        <ThemedText style={styles.cardText}>
-          Alfred Pennyworth • Comissário Gordon • Nightwing •
-          Red Hood • Red Robin • Barbara Gordon • Robin • Ace, The Bat-Dog •
-          Batwoman • Catwoman • Spoiler • Bluebird • Black Bat • The Signal •
-          Batwing • Azrael • Julia Pennyworth • Hunter • Lucius Fox • Leslie Thompkins •
-          Reene Montoya • Crispus Allen • Harvey Bullock • Jason Bard
+        <ThemedText style={styles.sectionDescription}>
+          Pessoas que lutam ao lado do Cavaleiro das Trevas.
         </ThemedText>
+
+        <View style={styles.alliesGrid}>
+          {allies.map((ally) => (
+            <View key={ally.name} style={styles.allyCard}>
+              <Image
+                source={ally.image}
+                style={styles.allyImage}
+                contentFit="cover"
+              />
+
+              <View style={styles.allyOverlay} />
+
+              <View style={styles.allyInfo}>
+                <ThemedText style={styles.allyName}>
+                  {ally.name}
+                </ThemedText>
+
+                <ThemedText style={styles.allyRole}>
+                  {ally.role}
+                </ThemedText>
+              </View>
+            </View>
+          ))}
+        </View>
       </ThemedView>
     </ParallaxScrollView>
   );
@@ -317,4 +459,119 @@ const styles = StyleSheet.create({
     fontWeight: '900',
     letterSpacing: 1,
   },
+
+  identityGrid: {
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+  gap: 12,
+},
+
+identityCard: {
+  flex: 1,
+  height: 260,
+  backgroundColor: '#111111',
+  borderWidth: 1,
+  borderColor: '#292929',
+  borderRadius: 5,
+  overflow: 'hidden',
+  position: 'relative',
+},
+
+identityImage: {
+  width: '100%',
+  height: '100%',
+  position: 'absolute',
+},
+
+identityOverlay: {
+  ...StyleSheet.absoluteFillObject,
+  backgroundColor: 'rgba(0, 0, 0, 0.25)',
+},
+
+identityInfo: {
+  position: 'absolute',
+  bottom: 0,
+  left: 0,
+  right: 0,
+  padding: 12,
+  backgroundColor: 'rgba(0, 0, 0, 0.8)',
+  borderTopWidth: 2,
+  borderTopColor: '#F5C518',
+},
+
+identityName: {
+  color: '#FFFFFF',
+  fontSize: 17,
+  fontWeight: '900',
+  letterSpacing: 0.5,
+},
+
+identityRole: {
+  color: '#F5C518',
+  fontSize: 11,
+  fontWeight: '700',
+  marginTop: 4,
+},
+
+  sectionDescription: {
+    color: '#777777',
+    fontSize: 14,
+    lineHeight: 20,
+    marginTop: -6,
+  },
+
+  alliesGrid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    rowGap: 14,
+  },
+
+  allyCard: {
+    width: '48%',
+    height: 210,
+    backgroundColor: '#111111',
+    borderWidth: 1,
+    borderColor: '#292929',
+    borderRadius: 5,
+    overflow: 'hidden',
+    position: 'relative',
+  },
+
+  allyImage: {
+    width: '100%',
+    height: '100%',
+    position: 'absolute',
+  },
+
+  allyOverlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'rgba(0, 0, 0, 0.35)',
+  },
+
+  allyInfo: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    padding: 12,
+    backgroundColor: 'rgba(0, 0, 0, 0.75)',
+    borderTopWidth: 2,
+    borderTopColor: '#F5C518',
+  },
+
+  allyName: {
+    color: '#FFFFFF',
+    fontSize: 15,
+    fontWeight: '900',
+    letterSpacing: 0.5,
+  },
+
+  allyRole: {
+    color: '#F5C518',
+    fontSize: 11,
+    fontWeight: '700',
+    marginTop: 3,
+  },
+  
 });
